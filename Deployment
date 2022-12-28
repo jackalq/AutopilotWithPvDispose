@@ -23,25 +23,3 @@ spec:
       - name: log-volumes
         persistentVolumeClaim:
           claimName: pvc-disposable
----
-apiVersion: "autoscaling/v2"
-kind: "HorizontalPodAutoscaler"
-metadata:
-  name: "nginx-2-hpa-dhdo"
-  namespace: "default"
-  labels:
-    app: "nginx-2"
-spec:
-  scaleTargetRef:
-    kind: "Deployment"
-    name: "nginx-2"
-    apiVersion: "apps/v1"
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
-  - type: "Resource"
-    resource:
-      name: "cpu"
-      target:
-        type: "Utilization"
-        averageUtilization: 80
