@@ -21,7 +21,7 @@ spec:
         image: "nginx:latest"
         volumeMounts:
           - mountPath: /var/log/nginx/
-            name: log-volume
+            name: log-volumes
       volumes:
       - name: log-volumes
         persistentVolumeClaim:
